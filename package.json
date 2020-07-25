@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/DaviReisVieira/robot-video-maker/issues"
   },
-  "homepage": "https://github.com/DaviReisVieira/robot-video-maker#readme"
+  "homepage": "https://github.com/DaviReisVieira/robot-video-maker#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }
