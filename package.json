@@ -1,0 +1,19 @@
+{
+  "name": "robot-video-maker",
+  "version": "1.0.0",
+  "description": "Open Source project to make videos using some cool Technologies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaviReisVieira/robot-video-maker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DaviReisVieira/robot-video-maker/issues"
+  },
+  "homepage": "https://github.com/DaviReisVieira/robot-video-maker#readme"
+}
