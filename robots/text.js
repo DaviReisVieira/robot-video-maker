@@ -1,11 +1,24 @@
 const algorithmia = require("algorithmia");
 const algorithmiaApiKey = require("../credentials/credentials.json").apiKey;
+const watsonApiKey = require("../credentials/watson-nlu.json").apikey;
 const sentenceBoundaryDetection = require("sbd");
+
+const NaturalLanguageUnderstandingV1 = require("watson-developer-cloud/natural-language-understanding/v1.js");
+const { resolve } = require("path");
+const { reject } = require("async");
+
+var nlu = new NaturalLanguageUnderstandingV1({
+  iam_apikey: watsonApiKey,
+  version: "2018-04-05",
+  url: "https://gateway.watsonplatform.net/natural-language-understanding/api/",
+});
 
 async function robot(content) {
   await fetchContentFromWikipedia(content);
   sanitizeContent(content);
   breakContentIntoSentences(content);
+  limitMaximumSentences(content);
+  await fetchKeywordsOfAllSentences(content);
 
   async function fetchContentFromWikipedia(content) {
     const algorithmiaAuthenticated = algorithmia(algorithmiaApiKey);
@@ -58,6 +71,40 @@ async function robot(content) {
         keywords: [],
         images: [],
       });
+    });
+  }
+
+  function limitMaximumSentences(content) {
+    content.sentences = content.sentences.slice(0, content.maximumSentences);
+  }
+
+  async function fetchKeywordsOfAllSentences(content) {
+    for (const sentence of content.sentences) {
+      sentence.keywords = await fetchWatsonAndReturnKeywords(sentence.text);
+    }
+  }
+
+  async function fetchWatsonAndReturnKeywords(sentence) {
+    return new Promise((resolve, reject) => {
+      nlu.analyze(
+        {
+          html: sentence,
+          features: {
+            keywords: {},
+          },
+        },
+        function (err, response) {
+          if (err) {
+            throw err;
+          }
+
+          const keywords = response.keywords.map((keyword) => {
+            return keyword.text;
+          });
+
+          resolve(keywords);
+        }
+      );
     });
   }
 }
