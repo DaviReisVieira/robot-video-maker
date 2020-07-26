@@ -105,3 +105,6 @@ dist
 
 #Anotações
 anotações.txt
+
+#Credentials
+credentials/*.json
