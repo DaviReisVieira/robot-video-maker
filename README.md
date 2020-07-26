@@ -15,7 +15,7 @@ File: `algorithmia.json`
 
 ```
 
-##Watson Natural Language Understanding
+## Watson Natural Language Understanding
 
 File: `watson-nlu.json`
 
@@ -27,6 +27,17 @@ File: `watson-nlu.json`
   "iam_role_crn": "crn:v1:bluemix:public:iam::::serviceRole:Manager",
   "iam_serviceid_crn": "crn:v1:bluemix:public:iam-identity::a/YOUR_API",
   "url": "YOUR_API"
+}
+
+```
+
+## Google API
+
+File: `google-search.json`
+
+```
+{
+  "apiKey": "YOUR API HERE"
 }
 
 ```
