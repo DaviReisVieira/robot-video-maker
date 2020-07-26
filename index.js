@@ -14,7 +14,7 @@ async function start() {
   await robots.text(content);
 
   function askAndReturnSearchTerm() {
-    return readLine.question("Type a Wikipedia search term:");
+    return readLine.question("Type a search term on Wikipedia:");
   }
 
   function askAndReturnPrefix() {
