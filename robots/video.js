@@ -7,13 +7,14 @@ const fromRoot = (relPath) => path.resolve(rootPath, relPath);
 const os = require("os");
 
 async function robot() {
+  console.log("> [Video-robot] Starting...");
   const content = state.load();
 
   //await convertAllImages(content);
   //await createAllSentenceImages(content);
   //await createYouTubeThumbnail(content);
-  await createAfterEffectsScript(content);
-  //await renderVideoWithAfterEffects();
+  //await createAfterEffectsScript(content);
+  await renderVideoWithAfterEffects();
 
   state.save(content);
 
@@ -33,8 +34,6 @@ async function robot() {
       const outputFile = fromRoot(`./content/${sentenceIndex}-converted.png`);
       const width = 1920;
       const height = 1080;
-
-      console.log(inputFile);
 
       gm()
         .command("magick")
@@ -150,7 +149,7 @@ async function robot() {
             return reject(error);
           }
 
-          console.log("> Creating YouTube Thumbnail");
+          console.log("> [Video-robot] YouTube thumbnail created");
           resolve();
         });
     });
@@ -168,7 +167,7 @@ async function robot() {
       const templateFilePath = fromRoot("./templates/1/template.aep");
       const destinationFilePath = fromRoot("./content/output.mov");
 
-      console.log("> [video-robot] Starting After Effects");
+      console.log("> [Video-robot] Starting After Effects");
 
       const aerender = spawn(aerenderFilePath, [
         "-comp",
@@ -184,7 +183,7 @@ async function robot() {
       });
 
       aerender.on("close", () => {
-        console.log("> [video-robot] After Effects closed");
+        console.log("> [Video-robot] After Effects closed");
         resolve();
       });
     });
