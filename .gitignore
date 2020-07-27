@@ -111,4 +111,4 @@ credentials/*.json
 
 #Content
 /content
-/templates/1
+/templates
