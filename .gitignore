@@ -108,3 +108,6 @@ anotações.txt
 
 #Credentials
 credentials/*.json
+
+#Content
+/content

@@ -1,8 +1,10 @@
-# robot-video-maker
+# Robot Video-Maker
 
 Open Source project to make videos using some cool Technologies.
 
-# Credentials format
+# Usage:
+
+# Credentials Format
 
 ## Algorithmia
 
@@ -28,7 +30,6 @@ File: `watson-nlu.json`
   "iam_serviceid_crn": "crn:v1:bluemix:public:iam-identity::a/YOUR_API",
   "url": "YOUR_API"
 }
-
 ```
 
 ## Google API
@@ -37,7 +38,7 @@ File: `google-search.json`
 
 ```
 {
-  "apiKey": "YOUR API HERE"
+  "apiKey": "YOUR_API",
+  "searchEngineId": "YOUR_API"
 }
-
 ```
