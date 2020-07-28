@@ -28,7 +28,7 @@ async function robot() {
         query = `${content.searchTerm} ${content.sentences[sentenceIndex].keywords[0]}`;
       }
 
-      console.log(`> [image-robot] Querying Google Images with: "${query}"`);
+      console.log(`> [Image-robot] Querying Google Images with: "${query}"`);
 
       content.sentences[
         sentenceIndex

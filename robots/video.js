@@ -10,10 +10,10 @@ async function robot() {
   console.log("> [Video-robot] Starting...");
   const content = state.load();
 
-  //await convertAllImages(content);
-  //await createAllSentenceImages(content);
-  //await createYouTubeThumbnail(content);
-  //await createAfterEffectsScript(content);
+  await convertAllImages(content);
+  await createAllSentenceImages(content);
+  await createYouTubeThumbnail(content);
+  await createAfterEffectsScript(content);
   await renderVideoWithAfterEffects();
 
   state.save(content);
@@ -140,10 +140,12 @@ async function robot() {
       gm()
         .command("magick")
         .in(fromRoot("./content/0-converted.png"))
-        .font("COMICBD.ttf", 210)
+        .fill("#2366d1")
+        .drawRectangle(200, 580, 1720, 1080)
+        .font("C:/Windows/Fonts/IMPACT.ttf", 210)
         .fill("#fff")
-        .stroke("#000", 1)
-        .drawText(0, 320, query, "center")
+        .stroke("#000", 2)
+        .drawText(0, 300, query, "center")
         .write(fromRoot("./content/youtube-thumbnail.jpg"), (error) => {
           if (error) {
             return reject(error);
